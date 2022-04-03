@@ -1,0 +1,11 @@
+.projects__main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projects__main-item {
+  margin-top: 10px;
+  width: 30%;
+}

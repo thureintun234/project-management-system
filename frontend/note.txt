@@ -1,0 +1,45 @@
+////////// 1
+npm install notistack
+
+/////////// 2
+import { SnackbarProvider } from 'notistack';
+
+<SnackbarProvider maxSnack={3}>
+    <App />
+</SnackbarProvider>
+
+
+//////////////// 3
+import { withSnackbar } from 'notistack';
+
+class MyComponent extends Component {
+  handleNetworkRequest = () => {
+     fetchSomeData()
+        .then(() => this.props.enqueueSnackbar('Successfully fetched the data.'))
+        .catch(() => this.props.enqueueSnackbar('Failed fetching data.'));
+  };
+
+  render(){
+     //...
+  };
+
+};
+
+export default withSnackbar(MyComponent);
+
+
+
+//////////////// 4
+import { useSnackbar } from 'notistack';
+
+const MyButton = () => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    const handleClick = () => {
+        enqueueSnackbar('I love hooks');
+    };
+
+    return (
+        <Button onClick={handleClick}>Show snackbar</Button>
+    );
+}

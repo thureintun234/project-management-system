@@ -1,0 +1,11 @@
+.project__details {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.project__details-users,
+.project__details-tasks {
+  width: 45%;
+  margin: 10px;
+}

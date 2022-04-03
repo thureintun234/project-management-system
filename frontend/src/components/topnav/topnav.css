@@ -1,0 +1,19 @@
+.topnav {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  height: var(--topnav-height);
+  background-color: var(--nav-bg);
+  color: var(--txt-white);
+}
+
+.topnav h2 {
+  color: var(--main-color);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+}

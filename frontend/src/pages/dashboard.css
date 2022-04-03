@@ -1,0 +1,9 @@
+.dashboard__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.dashboard__content-item {
+  margin: 20px;
+  width: 100%;
+}
