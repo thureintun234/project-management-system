@@ -28,6 +28,7 @@ const ProjectCreate = () => {
 
   useEffect(() => {
     companyService.getAll().then(result => setCompanies(result))
+    return () => setCompanies([])
   }, [])
 
   useEffect(() => {

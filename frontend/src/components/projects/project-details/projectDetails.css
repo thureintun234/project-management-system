@@ -2,10 +2,16 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .project__details-users,
 .project__details-tasks {
   width: 45%;
   margin: 10px;
+}
+
+.deadline {
+  text-decoration: underline;
 }

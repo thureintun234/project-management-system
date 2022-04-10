@@ -34,7 +34,7 @@ const Companies = () => {
           </Button>
         </Link>
       </div>
-      <div style={{ height: 300, width: '100%' }}>
+      <div style={{ height: 300, width: '35%' }}>
         <DataGrid
           rows={rows}
           columns={columns}

@@ -1,6 +1,7 @@
 const Project = require('../models/project')
 const Company = require('../models/company')
 const User = require('../models/user')
+const Task = require('../models/task')
 
 exports.createProject = async (req, res) => {
   const body = req.body
@@ -38,6 +39,9 @@ exports.assigneUser = async (req, res) => {
     { $addToSet: { assigned_users: req.params.userId } },
     { new: true }
   )
+  const user = await User.findById(req.params.userId)
+  user.assigned_projects = user.assigned_projects.concat(updatedProject)
+  await user.save()
   res.json(updatedProject)
 }
 
@@ -47,6 +51,9 @@ exports.addTask = async (req, res) => {
     { $addToSet: { tasks: req.params.taskId } },
     { new: true }
   )
+  const task = await Task.findById(req.params.taskId)
+  task.project = updatedProject;
+  await task.save()
   res.json(updatedProject)
 }
 

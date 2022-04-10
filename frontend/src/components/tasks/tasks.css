@@ -1,7 +1,13 @@
-.projects__main {
+.tasks__main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.tasks__main-item {
+  margin-top: 10px;
+  width: 30%;
+  margin-right: 10px;
 }

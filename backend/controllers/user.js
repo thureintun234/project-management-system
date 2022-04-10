@@ -1,6 +1,8 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const Company = require('../models/company')
+const jwt = require('jsonwebtoken')
+const config = require('../utils/config')
 
 exports.createUser = async (req, res) => {
   const body = req.body
@@ -60,3 +62,22 @@ exports.getUsers = async (req, res) => {
   const users = await User.find({}).populate('company', { name: 1 })
   res.json(users)
 }
+
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body
+
+  const existingUser = await User.findOne({ email })
+  if (!existingUser) {
+    return res.status(404).json({ message: 'User does not exit' })
+  }
+
+  const correctPassword = await bcrypt.compare(password, existingUser.password)
+  if (!correctPassword) {
+    return res.status(400).json({ message: 'Invalid Credentails' })
+  }
+
+  const token = jwt.sign({ username: existingUser.username, email: existingUser.email, id: existingUser._id }, config.SECRET, { expiresIn: "24h" })
+  res.status(200).json({ result: existingUser, token })
+}
+

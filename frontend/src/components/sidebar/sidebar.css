@@ -25,9 +25,10 @@
   flex-direction: column;
   margin-top: 30px;
   width: 100%;
+  justify-content: center;
 }
 
-.sidbar__items > li {
+.sidbar__items > li a {
   align-items: center;
   padding: 10px;
   border: 1px solid rgb(192, 180, 180);
@@ -36,7 +37,12 @@
   justify-content: center;
 }
 
-.sidbar__items li:hover {
+.sidbar__items li a:hover {
+  background-color: var(--nav-bg);
+  color: var(--main-color);
+}
+
+.sidbar__items li a.active {
   background-color: var(--nav-bg);
   color: var(--main-color);
 }

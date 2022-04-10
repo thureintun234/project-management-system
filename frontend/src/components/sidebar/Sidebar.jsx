@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/images/favicon.ico'
 import './sidebar.css'
 
@@ -11,16 +11,16 @@ const Sidebar = () => {
       </div>
       <ul className='sidbar__items'>
         <li>
-          <Link to='/user'>User</Link>
+          <NavLink to='/user'>User</NavLink>
         </li>
         <li>
-          <Link to='/project'>Project</Link>
+          <NavLink to='/project'>Project</NavLink>
         </li>
         <li>
-          <Link to='/task'>Task</Link>
+          <NavLink to='/task'>Task</NavLink>
         </li>
         <li>
-          <Link to='/company'>Company</Link>
+          <NavLink to='/company'>Company</NavLink>
         </li>
       </ul>
     </div>

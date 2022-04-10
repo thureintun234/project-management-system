@@ -17,8 +17,14 @@ const addUserToProject = async (projectId, userId) => {
   return response.data
 }
 
+const addTaskToProject = async (projectId, taskId) => {
+  const response = await axios.put(`${baseUrl}/${projectId}/tasks/${taskId}`)
+  return response.data
+}
+
 export default {
   getAll,
   create,
-  addUserToProject
+  addUserToProject,
+  addTaskToProject
 }

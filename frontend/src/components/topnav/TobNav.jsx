@@ -1,13 +1,22 @@
 import { AccountCircle, NotificationsActiveRounded } from '@mui/icons-material'
-import { Badge, IconButton, Menu, MenuItem } from '@mui/material'
+import { Badge, Button, IconButton, Menu, MenuItem, Typography } from '@mui/material'
 
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import './topnav.css'
 
 const TobNav = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [notiAnchor, setNotiAnchor] = React.useState(null)
+  const [user, setUser] = React.useState(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const jsonUser = localStorage.getItem('profile')
+    const user = JSON.parse(jsonUser)
+    setUser(user)
+  }, [])
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,21 +34,38 @@ const TobNav = () => {
     setNotiAnchor(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('profile')
+    setUser(null)
+  }
+
+  const handleLogin = () => {
+    navigate('/login')
+  }
+
+  console.log(user)
+
   return (
     <div className='topnav'>
       <h2>Project Management System</h2>
       <div className='user-info'>
         <div className="user-profile">
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
+          {user ?
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+
+              <Typography variant="body1" color="primary" className='mx-2'>
+                {user.result.username}
+              </Typography> <AccountCircle />
+            </IconButton>
+
+            : <Button variant='contained' onClick={handleLogin}>Login</Button>}
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
@@ -56,7 +82,7 @@ const TobNav = () => {
             onClose={handleClose}
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </div>
         <div className="user-notification">

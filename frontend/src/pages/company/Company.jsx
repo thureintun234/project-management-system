@@ -4,7 +4,7 @@ import Companies from '../..//components/companies/Companies'
 const Company = () => {
   return (
     <div>
-      <h1>Company</h1>
+      <h1>Companies</h1>
       <Companies />
     </div>
   )
